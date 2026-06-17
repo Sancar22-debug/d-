@@ -1,0 +1,446 @@
+/* ============================================
+   Header — DOMINANT+
+   ============================================ */
+
+/* --- Header bar --- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    backdrop-filter var(--transition-base);
+  border-bottom: 1px solid transparent;
+}
+
+.header.scrolled {
+  background: rgba(21, 23, 25, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+/* --- Inner layout --- */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+/* --- Left: Logo --- */
+.logoLeft {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.logoImage {
+  height: 18px;
+  width: auto;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* --- Right: Desktop nav --- */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.navLink {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navLink:hover {
+  color: var(--white);
+  border-bottom-color: var(--white);
+}
+
+/* --- Language Dropdown (Desktop) --- */
+.langDropdown {
+  position: relative;
+}
+
+.langTrigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  color: var(--white);
+  cursor: pointer;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.langTrigger:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.langIcon {
+  width: 15px;
+  height: 15px;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.langLabel {
+  min-width: 18px;
+  text-align: center;
+}
+
+.langChevron {
+  width: 10px;
+  height: 10px;
+  opacity: 0.6;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+}
+
+.langChevronOpen {
+  transform: rotate(180deg);
+}
+
+.langMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  min-width: 72px;
+  background: rgba(21, 23, 25, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  z-index: 1001;
+}
+
+.langMenuOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+
+.langOption {
+  display: block;
+  width: 100%;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.langOption:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.langOption + .langOption {
+  margin-top: 2px;
+}
+
+/* --- CTA button --- */
+.ctaButton {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dark);
+  background: var(--white);
+  text-decoration: none;
+  padding: 0.65rem 1.5rem;
+  border: 1.5px solid var(--white);
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ctaButton:hover {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* --- Burger button --- */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.burgerLine {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--white);
+  border-radius: 1px;
+  transition: all var(--transition-base);
+  transform-origin: center;
+}
+
+.burgerOpen .burgerLine:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.burgerOpen .burgerLine:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* --- Fullscreen mobile menu --- */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(21, 23, 25, 0.96);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition-slow),
+    visibility var(--transition-slow);
+}
+
+.mobileMenu.mobileMenuOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobileNavLink {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-70);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base),
+    color var(--transition-fast);
+}
+
+.mobileMenuOpen .mobileNavLink {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileNavLink:hover {
+  color: var(--white);
+}
+
+/* --- Mobile Language Selector --- */
+.mobileLangSelector {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobileMenuOpen .mobileLangSelector {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileLangTrigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.mobileLangTrigger:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.mobileLangIcon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.mobileLangChevron {
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobileLangChevronOpen {
+  transform: rotate(180deg);
+}
+
+.mobileLangMenu {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobileLangMenuOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobileLangOption {
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.mobileLangOption:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--white);
+}
+
+.mobileCta {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--white-30);
+  border-radius: var(--radius-full);
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base),
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.mobileMenuOpen .mobileCta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileCta:hover {
+  background: var(--white);
+  color: var(--dark);
+  border-color: var(--white);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 900px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImage {
+    height: 14px;
+  }
+}
