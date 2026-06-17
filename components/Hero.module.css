@@ -15,7 +15,10 @@
 /* --- Sky background --- */
 .skyBg {
   position: fixed;
-  inset: -100px 0 0 0;
+  top: -10vh;
+  left: -10vw;
+  width: 120vw;
+  height: 120vh;
   z-index: 0;
   will-change: transform;
 }
@@ -221,6 +224,7 @@
     min-height: 680px;
     justify-content: center;
     gap: 2.5rem;
+    padding-top: 8vh;
   }
 
   .title {

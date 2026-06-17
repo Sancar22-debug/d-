@@ -22,7 +22,7 @@ export default function HeroContent({ onExplore, onContact }: HeroContentProps) 
       className={styles.hero}
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, y: -60, transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] } }}
+      exit={{ opacity: 0, y: "-100vh", transition: { duration: 0.6, ease: [0.32, 0.72, 0, 1] } }}
     >
       {/* Hero title */}
       <div className={styles.titleLayer}>

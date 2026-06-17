@@ -420,22 +420,20 @@ export default function ProjectCategories({
         {!selectedCategory ? (
           <motion.div
             key="boxes-screen"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+            initial={{ opacity: 0, y: "100vh" }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.32, 0.72, 0, 1] } }}
+            exit={{ opacity: 0, y: "100vh", transition: { duration: 0.6, ease: [0.32, 0.72, 0, 1] } }}
             className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-10"
           >
             {/* Section heading — well above the boxes */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: 0.15,
-                ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
               }}
-              className="text-center max-w-3xl mx-auto"
-              style={{ marginBottom: "3.5rem", marginTop: "-2rem" }}
+              className="text-center max-w-3xl mx-auto -mt-24 sm:-mt-8 mb-14"
             >
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight"

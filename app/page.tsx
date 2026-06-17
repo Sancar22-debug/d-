@@ -84,12 +84,12 @@ export default function Home() {
     const handleTouchMove = (e: TouchEvent) => {
       const diff = lastTouchY - e.touches[0].clientY;
       // Swipe up → go to projects
-      if (activeView === "hero" && diff > 40) {
+      if (activeView === "hero" && diff > 15) {
         goToProjects();
         return;
       }
       // Swipe down → go back to hero
-      if (activeView === "projects" && !selectedCategory && diff < -40) {
+      if (activeView === "projects" && !selectedCategory && diff < -15) {
         if (window.scrollY <= 0) {
           goToHero();
         }
