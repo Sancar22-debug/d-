@@ -20,9 +20,9 @@ export default function HeroContent({ onExplore, onContact }: HeroContentProps) 
     <motion.section
       id="hero"
       className={styles.hero}
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, y: "-100vh", transition: { duration: 0.6, ease: [0.32, 0.72, 0, 1] } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.8 } }}
+      exit={{ opacity: 0, y: -60, transition: { duration: 0.8, ease: "easeInOut" } }}
     >
       {/* Hero title */}
       <div className={styles.titleLayer}>

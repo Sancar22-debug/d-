@@ -420,9 +420,9 @@ export default function ProjectCategories({
         {!selectedCategory ? (
           <motion.div
             key="boxes-screen"
-            initial={{ opacity: 0, y: "100vh" }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.32, 0.72, 0, 1] } }}
-            exit={{ opacity: 0, y: "100vh", transition: { duration: 0.6, ease: [0.32, 0.72, 0, 1] } }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.8 } }}
+            exit={{ opacity: 0, transition: { duration: 0.6 } }}
             className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-10"
           >
             {/* Section heading — well above the boxes */}
@@ -472,7 +472,7 @@ export default function ProjectCategories({
                   variants={cardVariants}
                   onClick={() => {
                     onSelectCategory(category.id);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.scrollTo({ top: 60, behavior: "smooth" });
                   }}
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
                   className="group cursor-pointer"
