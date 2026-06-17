@@ -125,14 +125,14 @@ export default function ProjectCategories({
             className="bg-white rounded-[2rem] overflow-hidden shadow-[0_16px_60px_rgb(0,0,0,0.15)]"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="h-72 lg:h-auto bg-gray-100 relative">
+              <div className="h-64 sm:h-72 lg:h-auto bg-gray-100 relative">
                 <img loading="lazy" decoding="async"
                   src={orion.image}
                   alt={orion.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-8 lg:p-16 flex flex-col justify-center">
+              <div className="p-5 sm:p-8 lg:p-16 flex flex-col justify-center">
                 <span className="text-sm tracking-wider text-gray-400 uppercase font-semibold mb-3">
                   {t("orion.type")} • {t("orion.class")}
                 </span>
@@ -196,7 +196,7 @@ export default function ProjectCategories({
                   exit={{ opacity: 0, height: 0 }}
                   className="border-t border-gray-100"
                 >
-                  <div className="p-8 lg:p-16">
+                  <div className="p-5 sm:p-8 lg:p-16">
                     {/* ── About ── */}
                     <div className="max-w-3xl mb-20">
                       <h4 className="text-3xl font-light mb-6 text-[#151719]">
@@ -233,17 +233,17 @@ export default function ProjectCategories({
                         <img loading="lazy" decoding="async"
                           src="/images/orion/new-exterior-hero.webp"
                           alt="ORION — Вид на здание"
-                          className="w-full h-[400px] object-cover rounded-3xl"
+                          className="w-full h-64 sm:h-[400px] object-cover rounded-3xl"
                         />
                         <img loading="lazy" decoding="async"
                           src="/images/orion/new-entrance.webp"
                           alt="ORION — Вход и паркинг"
-                          className="w-full h-[400px] object-cover rounded-3xl"
+                          className="w-full h-64 sm:h-[400px] object-cover rounded-3xl"
                         />
                         <img loading="lazy" decoding="async"
                           src="/images/orion/new-exterior-views.webp"
                           alt="ORION — Виды здания"
-                          className="w-full sm:col-span-2 h-[500px] object-cover rounded-3xl object-top"
+                          className="w-full sm:col-span-2 h-72 sm:h-[500px] object-cover rounded-3xl object-top"
                         />
                       </div>
                     </div>
@@ -260,12 +260,12 @@ export default function ProjectCategories({
                         <img loading="lazy" decoding="async"
                           src="/images/orion/new-courtyard-walkway.webp"
                           alt="Детская площадка"
-                          className="w-full h-80 object-cover rounded-3xl"
+                          className="w-full h-64 sm:h-80 object-cover rounded-3xl"
                         />
                         <img loading="lazy" decoding="async"
                           src="/images/orion/new-playground.webp"
                           alt="Дворовая зона отдыха"
-                          className="w-full h-80 object-cover rounded-3xl"
+                          className="w-full h-64 sm:h-80 object-cover rounded-3xl"
                         />
                       </div>
                     </div>
@@ -278,11 +278,13 @@ export default function ProjectCategories({
                       <p className="text-gray-600 mb-6 text-lg">
                         {t("orion.address")}
                       </p>
-                      <img loading="lazy" decoding="async"
-                        src="/images/orion/location-map.webp"
-                        alt="Карта расположения ORION"
-                        className="w-full h-auto rounded-3xl border border-gray-100"
-                      />
+                      <div className="cursor-zoom-in hover:shadow-lg transition-shadow rounded-3xl overflow-hidden border border-gray-100" onClick={() => setZoomedImage('/images/orion/location-map.webp')}>
+                        <img loading="lazy" decoding="async"
+                          src="/images/orion/location-map.webp"
+                          alt="Карта расположения ORION"
+                          className="w-full h-auto"
+                        />
+                      </div>
                     </div>
 
                     {/* ── Floor Plan Overview ── */}
@@ -290,11 +292,13 @@ export default function ProjectCategories({
                       <h4 className="text-3xl font-light mb-8 text-[#151719]">
                         {t("detail.floorPlan")}
                       </h4>
-                      <img loading="lazy" decoding="async"
-                        src="/images/orion/floor-plan-typical.webp"
-                        alt="Типовой этаж 3-15"
-                        className="w-full h-auto rounded-3xl border border-gray-100"
-                      />
+                      <div className="cursor-zoom-in hover:shadow-lg transition-shadow rounded-3xl overflow-hidden border border-gray-100" onClick={() => setZoomedImage('/images/orion/floor-plan-typical.webp')}>
+                        <img loading="lazy" decoding="async"
+                          src="/images/orion/floor-plan-typical.webp"
+                          alt="Типовой этаж 3-15"
+                          className="w-full h-auto"
+                        />
+                      </div>
                     </div>
 
                     {/* ── Apartment Layouts ── */}
@@ -431,7 +435,7 @@ export default function ProjectCategories({
                 ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
               }}
               className="text-center max-w-3xl mx-auto"
-              style={{ marginBottom: "3.5rem", marginTop: "-6rem" }}
+              style={{ marginBottom: "3.5rem", marginTop: "-2rem" }}
             >
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight"
@@ -461,7 +465,7 @@ export default function ProjectCategories({
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 w-full"
+              className="grid grid-cols-3 gap-2 sm:gap-5 w-full max-w-[1060px]"
               style={{ maxWidth: "1060px" }}
             >
               {categories.map((category) => (
@@ -475,17 +479,15 @@ export default function ProjectCategories({
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
                   className="group cursor-pointer"
                 >
-                  <div
-                    className="rounded-[1.25rem] flex flex-col justify-between transition-all duration-500 overflow-hidden relative group/inner"
-                    style={{
-                      backgroundColor: "rgba(21, 23, 25, 0.65)",
-                      backdropFilter: "blur(24px)",
-                      WebkitBackdropFilter: "blur(24px)",
-                      padding: "2rem",
-                      height: "300px",
-                      border: "1px solid rgba(255, 255, 255, 0.08)",
-                      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
-                    }}
+                    <div
+                      className="rounded-[1rem] sm:rounded-[1.25rem] flex flex-col justify-between transition-all duration-500 overflow-hidden relative group/inner p-4 sm:p-8 h-[160px] sm:h-[300px]"
+                      style={{
+                        backgroundColor: "rgba(21, 23, 25, 0.65)",
+                        backdropFilter: "blur(24px)",
+                        WebkitBackdropFilter: "blur(24px)",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+                      }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = "rgba(21, 23, 25, 0.85)";
                       e.currentTarget.style.border = "1px solid rgba(255, 255, 255, 0.15)";
@@ -500,7 +502,7 @@ export default function ProjectCategories({
                     {/* Top: title + description */}
                     <div>
                       <h3
-                        className="text-xl sm:text-2xl tracking-tight leading-snug"
+                        className="text-xs sm:text-2xl tracking-tight leading-snug"
                         style={{
                           fontWeight: 700,
                           color: "#ffffff",
@@ -510,7 +512,7 @@ export default function ProjectCategories({
                         {category.title}
                       </h3>
                       <p
-                        className="leading-relaxed text-[0.9rem] sm:text-[0.95rem]"
+                        className="hidden sm:block leading-relaxed text-[0.95rem]"
                         style={{
                           color: "rgba(255, 255, 255, 0.65)",
                           fontWeight: 400,
@@ -528,7 +530,7 @@ export default function ProjectCategories({
                       }}
                     >
                       <span
-                        className="uppercase"
+                        className="hidden sm:inline uppercase"
                         style={{
                           fontSize: "0.7rem",
                           color: "rgba(255, 255, 255, 0.5)",
@@ -539,14 +541,14 @@ export default function ProjectCategories({
                         {t("projects.open")}
                       </span>
                       <div
-                        className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-400 group-hover:border-white/40"
+                        className="w-7 h-7 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-400 group-hover:border-white/40 mx-auto sm:mx-0"
                         style={{
                           border: "1px solid rgba(255, 255, 255, 0.15)",
                           color: "#ffffff",
                         }}
                       >
                         <svg
-                          className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300"
+                          className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform duration-300"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"

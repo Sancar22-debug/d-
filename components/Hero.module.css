@@ -5,7 +5,7 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   min-height: 760px;
   display: flex;
   flex-direction: column;
@@ -219,29 +219,39 @@
 @media (max-width: 768px) {
   .hero {
     min-height: 680px;
+    justify-content: center;
+    gap: 2.5rem;
   }
 
   .title {
-    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-size: clamp(1.8rem, 7vw, 3rem);
     line-height: 1.1; /* Increased to prevent character overlap on mobile */
   }
 
   .titleCompact {
-    font-size: clamp(1.6rem, 6.5vw, 2.8rem);
+    font-size: clamp(1.5rem, 6vw, 2.6rem);
   }
 
   .titleLayer {
-    transform: translate(-50%, -50%);
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
   }
 
   .subtitle {
     font-size: 0.8rem;
     max-width: 380px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
   }
 
   .bottomContent {
-    padding-bottom: 2rem;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    padding-bottom: 0;
   }
 
   .topLogo {
@@ -259,11 +269,11 @@
   }
 
   .title {
-    font-size: clamp(1.75rem, 10vw, 2.8rem);
+    font-size: clamp(1.5rem, 8vw, 2.4rem);
   }
 
   .titleCompact {
-    font-size: clamp(1.4rem, 8vw, 2.2rem);
+    font-size: clamp(1.3rem, 7vw, 2rem);
   }
 
   .buttons {
@@ -282,9 +292,10 @@
   .subtitle {
     font-size: 0.75rem;
     max-width: 300px;
+    margin-bottom: 0.8rem;
   }
 
   .bottomContent {
-    padding-bottom: 1.5rem;
+    padding-bottom: 0;
   }
 }

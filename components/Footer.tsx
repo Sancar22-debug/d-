@@ -84,10 +84,10 @@ export default function Footer() {
 
       {/* ── Main Content — 4 balanced columns ── */}
       <div className="max-w-6xl mx-auto px-6 mb-10">
-        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12 lg:gap-8">
+        <div className="grid grid-cols-2 lg:flex lg:flex-row justify-between items-start gap-y-12 gap-x-6 lg:gap-8">
 
           {/* ── Col 1: Brand ── */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="flex flex-col items-start text-left col-span-2 lg:col-auto">
             <Image
               src="/images/dominant-logo-white.png"
               alt="DOMINANT+"
@@ -104,7 +104,7 @@ export default function Footer() {
           </div>
 
           {/* ── Col 2: Navigation ── */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="flex flex-col items-start text-left">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">{t("footer.navTitle")}</h4>
             <nav className="flex flex-col gap-2.5">
               {navItems.map((item) => (
@@ -120,7 +120,7 @@ export default function Footer() {
           </div>
 
           {/* ── Col 3: Contacts ── */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="flex flex-col items-start text-left col-span-2 sm:col-span-1">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">{t("footer.contactsTitle")}</h4>
 
             <div className="mb-3">
@@ -166,7 +166,7 @@ export default function Footer() {
           </div>
 
           {/* ── Col 4: Documents ── */}
-          <div id="documents" className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div id="documents" className="flex flex-col items-start text-left col-span-2 sm:col-span-1">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">{t("footer.docsTitle")}</h4>
 
             <ul className="w-full space-y-2 mb-4">
@@ -176,7 +176,7 @@ export default function Footer() {
                     href={doc.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start justify-center lg:justify-start gap-2.5 py-1 group"
+                    className="flex items-start justify-start gap-2.5 py-1 group"
                   >
                     <span className="text-[10px] text-gray-500 bg-white/5 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider shrink-0 mt-0.5 group-hover:text-white group-hover:bg-white/10 transition-colors">
                       PDF
