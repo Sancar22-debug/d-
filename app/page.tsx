@@ -9,7 +9,7 @@ import ProjectCategories from "@/components/ProjectCategories";
 import Footer from "@/components/Footer";
 import { ProjectStatus } from "@/data/projects";
 import styles from "@/components/Hero.module.css";
-import heroSkyImg from "@/public/images/hero-sky.webp";
+import heroSkyImg from "@/public/images/back.webp";
 
 type ActiveView = "hero" | "projects";
 
@@ -187,7 +187,8 @@ export default function Home() {
           sizes="100vw"
           placeholder="blur"
           className={styles.skyImage}
-          quality={90}
+          quality={100}
+          unoptimized={true}
         />
       </div>
       <div className={styles.overlayBase} />

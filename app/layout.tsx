@@ -22,8 +22,15 @@ const manrope = Manrope({
 });
 
 // ============================================
-// Global Metadata
+// Global Metadata & Viewport
 // ============================================
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: "DOMINANT+ — строительная компания в Бишкеке",

@@ -114,7 +114,7 @@ export default function ProjectCategories({
       if (!orion) return null;
 
       return (
-        <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 mt-10 mb-20">
+        <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 mt-2 sm:mt-4 mb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -133,45 +133,45 @@ export default function ProjectCategories({
                 />
               </div>
               <div className="p-5 sm:p-8 lg:p-16 flex flex-col justify-center">
-                <span className="text-sm tracking-wider text-gray-400 uppercase font-semibold mb-3">
+                <span className="text-xs sm:text-sm tracking-wider text-gray-400 uppercase font-semibold mb-3">
                   {t("orion.type")} • {t("orion.class")}
                 </span>
-                <h3 className="text-4xl sm:text-5xl font-light mb-6 text-[#151719]">
+                <h3 className="text-3xl sm:text-5xl font-light mb-6 text-[#151719]">
                   {orion.name}
                 </h3>
-                <p className="text-gray-500 mb-10 leading-relaxed text-lg">
+                <p className="text-gray-500 mb-10 leading-relaxed text-base sm:text-lg">
                   {t("orion.location")}
                 </p>
                 <div className="grid grid-cols-2 gap-y-8 gap-x-6 mb-12">
                   <div>
-                    <span className="block text-3xl font-light text-[#151719] mb-2">
+                    <span className="block text-2xl sm:text-3xl font-light text-[#151719] mb-2">
                       {orion.floors}
                     </span>
-                    <span className="text-sm text-gray-500 uppercase tracking-wide">
+                    <span className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide">
                       {t("detail.floors")}
                     </span>
                   </div>
                   <div>
-                    <span className="block text-3xl font-light text-[#151719] mb-2">
+                    <span className="block text-2xl sm:text-3xl font-light text-[#151719] mb-2">
                       {orion.apartments}
                     </span>
-                    <span className="text-sm text-gray-500 uppercase tracking-wide">
+                    <span className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide">
                       {t("detail.apartments")}
                     </span>
                   </div>
                   <div>
-                    <span className="block text-xl font-light text-[#151719] mb-2 leading-tight">
+                    <span className="block text-lg sm:text-xl font-light text-[#151719] mb-2 leading-tight">
                       {t("orion.parking")}
                     </span>
-                    <span className="text-sm text-gray-500 uppercase tracking-wide">
+                    <span className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide">
                       {t("detail.parking")}
                     </span>
                   </div>
                   <div>
-                    <span className="block text-xl font-light text-[#151719] mb-2 leading-tight">
+                    <span className="block text-lg sm:text-xl font-light text-[#151719] mb-2 leading-tight">
                       {t("orion.ceilingHeight")}
                     </span>
-                    <span className="text-sm text-gray-500 uppercase tracking-wide">
+                    <span className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide">
                       {t("detail.ceilings")}
                     </span>
                   </div>
@@ -472,7 +472,7 @@ export default function ProjectCategories({
                   variants={cardVariants}
                   onClick={() => {
                     onSelectCategory(category.id);
-                    window.scrollTo({ top: 60, behavior: "smooth" });
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
                   className="group cursor-pointer"
@@ -576,10 +576,10 @@ export default function ProjectCategories({
               duration: 0.5,
               ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
             }}
-            className="min-h-screen pt-28 sm:pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-[90rem] mx-auto w-full flex flex-col xl:flex-row xl:items-start gap-8"
+            className="min-h-[105vh] pt-20 sm:pt-20 pb-32 px-4 sm:px-6 lg:px-8 max-w-[90rem] mx-auto w-full flex flex-col xl:flex-row xl:items-start gap-8"
           >
             {/* Sticky Back Button */}
-            <div className="sticky top-24 sm:top-28 z-50 flex-shrink-0">
+            <div className="sticky top-20 sm:top-24 z-50 flex-shrink-0 mt-2 sm:mt-4">
               <button
                 onClick={handleBack}
                 className="group flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] rounded-full hover:bg-gray-50 transition-all duration-300 cursor-pointer"
