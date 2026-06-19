@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { ProjectStatus, buildingProjects } from "@/data/projects";
 import { useLanguage } from "./LanguageContext";
 
@@ -126,10 +127,12 @@ export default function ProjectCategories({
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="h-64 sm:h-72 lg:h-auto bg-gray-100 relative">
-                <img loading="lazy" decoding="async"
+                <Image
                   src={orion.image}
                   alt={orion.name}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
               <div className="p-5 sm:p-8 lg:p-16 flex flex-col justify-center">
@@ -230,19 +233,28 @@ export default function ProjectCategories({
                         {t("detail.exterior")}
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <img loading="lazy" decoding="async"
+                        <Image
                           src="/images/orion/new-exterior-hero.webp"
                           alt="ORION — Вид на здание"
+                          width={800}
+                          height={500}
+                          sizes="(max-width: 640px) 100vw, 50vw"
                           className="w-full h-64 sm:h-[400px] object-cover rounded-3xl"
                         />
-                        <img loading="lazy" decoding="async"
+                        <Image
                           src="/images/orion/new-entrance.webp"
                           alt="ORION — Вход и паркинг"
+                          width={800}
+                          height={500}
+                          sizes="(max-width: 640px) 100vw, 50vw"
                           className="w-full h-64 sm:h-[400px] object-cover rounded-3xl"
                         />
-                        <img loading="lazy" decoding="async"
+                        <Image
                           src="/images/orion/new-exterior-views.webp"
                           alt="ORION — Виды здания"
+                          width={1200}
+                          height={600}
+                          sizes="(max-width: 640px) 100vw, 100vw"
                           className="w-full sm:col-span-2 h-72 sm:h-[500px] object-cover rounded-3xl object-top"
                         />
                       </div>
@@ -257,14 +269,20 @@ export default function ProjectCategories({
                         {t("detail.territoryDesc")}
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <img loading="lazy" decoding="async"
+                        <Image
                           src="/images/orion/new-courtyard-walkway.webp"
                           alt="Детская площадка"
+                          width={800}
+                          height={500}
+                          sizes="(max-width: 640px) 100vw, 50vw"
                           className="w-full h-64 sm:h-80 object-cover rounded-3xl"
                         />
-                        <img loading="lazy" decoding="async"
+                        <Image
                           src="/images/orion/new-playground.webp"
                           alt="Дворовая зона отдыха"
+                          width={800}
+                          height={500}
+                          sizes="(max-width: 640px) 100vw, 50vw"
                           className="w-full h-64 sm:h-80 object-cover rounded-3xl"
                         />
                       </div>
@@ -279,10 +297,13 @@ export default function ProjectCategories({
                         {t("orion.address")}
                       </p>
                       <div className="cursor-zoom-in hover:shadow-lg transition-shadow rounded-3xl overflow-hidden border border-gray-100" onClick={() => setZoomedImage('/images/orion/location-map.webp')}>
-                        <img loading="lazy" decoding="async"
+                        <Image
                           src="/images/orion/location-map.webp"
                           alt="Карта расположения ORION"
-                          className="w-full h-auto"
+                          width={1200}
+                          height={800}
+                          sizes="100vw"
+                          style={{ width: '100%', height: 'auto' }}
                         />
                       </div>
                     </div>
@@ -293,10 +314,13 @@ export default function ProjectCategories({
                         {t("detail.floorPlan")}
                       </h4>
                       <div className="cursor-zoom-in hover:shadow-lg transition-shadow rounded-3xl overflow-hidden border border-gray-100" onClick={() => setZoomedImage('/images/orion/floor-plan-typical.webp')}>
-                        <img loading="lazy" decoding="async"
+                        <Image
                           src="/images/orion/floor-plan-typical.webp"
                           alt="Типовой этаж 3-15"
-                          className="w-full h-auto"
+                          width={1200}
+                          height={800}
+                          sizes="100vw"
+                          style={{ width: '100%', height: 'auto' }}
                         />
                       </div>
                     </div>
@@ -311,13 +335,13 @@ export default function ProjectCategories({
                       <h5 className="text-xl font-medium mb-6 text-[#151719]">{t("detail.1room")}</h5>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-1room-51.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-1room-51.webp" alt={t("layout.1room.51")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-1room-51.webp" alt={t("layout.1room.51")} width={600} height={500} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-1room-59.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-1room-59.webp" alt={t("layout.1room.59")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-1room-59.webp" alt={t("layout.1room.59")} width={600} height={500} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-1room-58.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-1room-58.webp" alt={t("layout.1room.58")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-1room-58.webp" alt={t("layout.1room.58")} width={600} height={500} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                       </div>
 
@@ -325,16 +349,16 @@ export default function ProjectCategories({
                       <h5 className="text-xl font-medium mb-6 text-[#151719]">{t("detail.2room")}</h5>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-2room-70.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-2room-70.webp" alt={t("layout.2room.70")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-2room-70.webp" alt={t("layout.2room.70")} width={600} height={500} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-2room-70-5.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-2room-70-5.webp" alt={t("layout.2room.70-5")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-2room-70-5.webp" alt={t("layout.2room.70-5")} width={600} height={500} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-2room-75.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-2room-75.webp" alt={t("layout.2room.75")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-2room-75.webp" alt={t("layout.2room.75")} width={600} height={500} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-2room-78.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-2room-78.webp" alt={t("layout.2room.78")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-2room-78.webp" alt={t("layout.2room.78")} width={600} height={500} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                       </div>
 
@@ -342,10 +366,10 @@ export default function ProjectCategories({
                       <h5 className="text-xl font-medium mb-6 text-[#151719]">{t("detail.3room")}</h5>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-3room-95.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-3room-95.webp" alt={t("layout.3room.95")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-3room-95.webp" alt={t("layout.3room.95")} width={600} height={500} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                         <div className="bg-gray-50 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow cursor-zoom-in" onClick={() => setZoomedImage('/images/orion/plan-3room-108.webp')}>
-                          <img loading="lazy" decoding="async" src="/images/orion/plan-3room-108.webp" alt={t("layout.3room.108")} className="w-full h-auto" />
+                          <Image src="/images/orion/plan-3room-108.webp" alt={t("layout.3room.108")} width={600} height={500} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
                         </div>
                       </div>
                     </div>

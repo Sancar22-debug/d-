@@ -1,7 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit } from '@/lib/rate-limit';
+
+const limiter = rateLimit({
+  interval: 60 * 1000, // 60 seconds
+  uniqueTokenPerInterval: 500,
+});
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = request.headers.get("x-forwarded-for") || "unknown";
+    
+    try {
+      await limiter.check(5, ip); // 5 requests per minute
+    } catch {
+      return NextResponse.json(
+        { success: false, error: "Слишком много запросов. Попробуйте позже." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { name, phone, message } = body;
 

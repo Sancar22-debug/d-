@@ -35,10 +35,52 @@ export default function Footer() {
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
           <form 
             className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              alert(t("footer.success"));
-              (e.target as HTMLFormElement).reset();
+              const form = e.target as HTMLFormElement;
+              const formData = new FormData(form);
+              const name = formData.get("name") as string;
+              const countryCode = formData.get("countryCode") as string;
+              const phone = formData.get("phone") as string;
+              const fullPhone = `${countryCode}${phone}`;
+              
+              // Get UTM parameters from URL if present
+              const urlParams = new URLSearchParams(window.location.search);
+              const utmSource = urlParams.get("utm_source") || "website";
+              const utmMedium = urlParams.get("utm_medium") || "";
+              const utmCampaign = urlParams.get("utm_campaign") || "";
+              const utmTerm = urlParams.get("utm_term") || "";
+              const utmContent = urlParams.get("utm_content") || "";
+
+              try {
+                const response = await fetch("/api/contact", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    fields: {
+                      TITLE: `Лид с сайта | ${name} | ${fullPhone}`,
+                      NAME: name,
+                      PHONE: [{ VALUE: fullPhone, VALUE_TYPE: "WORK" }],
+                      UTM_SOURCE: utmSource,
+                      UTM_MEDIUM: utmMedium,
+                      UTM_CAMPAIGN: utmCampaign,
+                      UTM_TERM: utmTerm,
+                      UTM_CONTENT: utmContent,
+                      COMMENTS: "Лид отправлен с формы в футере сайта"
+                    }
+                  })
+                });
+                
+                if (response.ok) {
+                  alert(t("footer.success"));
+                  form.reset();
+                } else {
+                  throw new Error("API request failed");
+                }
+              } catch (error) {
+                console.error("Error submitting lead:", error);
+                alert("Произошла ошибка при отправке. Пожалуйста, попробуйте позже.");
+              }
             }}
           >
             {/* Name Field - Oval */}
