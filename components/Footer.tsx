@@ -59,7 +59,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-white pt-16 pb-8 border-t border-white/10" id="contact">
+    <footer className="relative z-[105] bg-black text-white pt-16 pb-8 border-t border-white/10" id="contact">
 
       {/* ── CTA Banner ── */}
       <div className="max-w-4xl mx-auto px-6 text-center mb-10 pb-10 border-b border-white/10">

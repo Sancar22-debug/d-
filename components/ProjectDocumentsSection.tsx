@@ -45,7 +45,7 @@ export default function ProjectDocumentsSection() {
             <div className="w-48 h-48 sm:w-56 sm:h-56 bg-white p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] flex items-center justify-center">
               <div className="relative w-full h-full">
                 <Image 
-                  src="/images/docs_qr.jpg" 
+                  src="/images/docs_qr.webp" 
                   alt="QR Code" 
                   fill 
                   className="object-contain"
