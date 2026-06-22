@@ -33,11 +33,11 @@
   background:
     linear-gradient(
       180deg,
-      rgba(21, 23, 25, 0.18) 0%,
-      rgba(21, 23, 25, 0.12) 25%,
-      rgba(21, 23, 25, 0.22) 50%,
-      rgba(21, 23, 25, 0.28) 75%,
-      rgba(21, 23, 25, 0.45) 100%
+      rgba(0, 0, 0, 0.18) 0%,
+      rgba(0, 0, 0, 0.12) 25%,
+      rgba(0, 0, 0, 0.22) 50%,
+      rgba(0, 0, 0, 0.28) 75%,
+      rgba(0, 0, 0, 0.45) 100%
     );
   pointer-events: none;
 }
@@ -125,7 +125,7 @@
 
 .subtitle {
   max-width: 520px;
-  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-family: var(--font-geologica), "Geologica", sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   line-height: 1.65;
@@ -142,7 +142,7 @@
 }
 
 .btnPrimary {
-  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-family: var(--font-geologica), "Geologica", sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -164,7 +164,7 @@
 }
 
 .btnSecondary {
-  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-family: var(--font-geologica), "Geologica", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.06em;

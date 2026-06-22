@@ -1,17 +1,56 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { company } from "@/data/company";
 import { useLanguage } from "./LanguageContext";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const [countryCode, setCountryCode] = useState("+996");
+  const [phoneVal, setPhoneVal] = useState("");
 
-  const documents = [
-    { key: "doc.agZaklyuchenie", href: "/documents/ag_zaklyuchenie.pdf#zoom=30" },
-    { key: "doc.gosEkspertiza", href: "/documents/gos_ekspertiza.pdf#zoom=30" },
-    { key: "doc.gosAkt", href: "/documents/gos_akt.pdf" },
-  ];
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCountryCode(e.target.value);
+    setPhoneVal(""); // Clear input when country changes
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = e.target.value.replace(/\D/g, ""); // strip non-digits
+
+    let formatted = "";
+    
+    if (countryCode === "+7") {
+      // RU/KZ format: (xxx)-xxx-xx-xx (10 digits)
+      if (val.length > 10) val = val.slice(0, 10);
+      if (val.length > 0) formatted += "(" + val.substring(0, 3);
+      if (val.length >= 4) formatted += ")-" + val.substring(3, 6);
+      if (val.length >= 7) formatted += "-" + val.substring(6, 8);
+      if (val.length >= 9) formatted += "-" + val.substring(8, 10);
+    } else if (countryCode === "+998") {
+      // UZ format: (xx)-xxx-xx-xx (9 digits)
+      if (val.length > 9) val = val.slice(0, 9);
+      if (val.length > 0) formatted += "(" + val.substring(0, 2);
+      if (val.length >= 3) formatted += ")-" + val.substring(2, 5);
+      if (val.length >= 6) formatted += "-" + val.substring(5, 7);
+      if (val.length >= 8) formatted += "-" + val.substring(7, 9);
+    } else {
+      // KG format (+996): (xxx)-xx-xx-xx (9 digits)
+      if (val.length > 9) val = val.slice(0, 9);
+      if (val.length > 0) formatted += "(" + val.substring(0, 3);
+      if (val.length >= 4) formatted += ")-" + val.substring(3, 5);
+      if (val.length >= 6) formatted += "-" + val.substring(5, 7);
+      if (val.length >= 8) formatted += "-" + val.substring(7, 9);
+    }
+
+    setPhoneVal(formatted);
+  };
+
+  const getPlaceholder = () => {
+    if (countryCode === "+7") return "(xxx)-xxx-xx-xx";
+    if (countryCode === "+998") return "(xx)-xxx-xx-xx";
+    return "(xxx)-xx-xx-xx";
+  };
 
   const navItems = [
     { label: t("nav.objects"), href: "#projects" },
@@ -20,7 +59,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#151719] text-white pt-16 pb-8 border-t border-white/10" id="contact">
+    <footer className="bg-black text-white pt-16 pb-8 border-t border-white/10" id="contact">
 
       {/* ── CTA Banner ── */}
       <div className="max-w-4xl mx-auto px-6 text-center mb-10 pb-10 border-b border-white/10">
@@ -40,9 +79,9 @@ export default function Footer() {
               const form = e.target as HTMLFormElement;
               const formData = new FormData(form);
               const name = formData.get("name") as string;
-              const countryCode = formData.get("countryCode") as string;
-              const phone = formData.get("phone") as string;
-              const fullPhone = `${countryCode}${phone}`;
+              // We don't read countryCode from formData anymore as we have it in state
+              const rawPhone = phoneVal.replace(/\D/g, "");
+              const fullPhone = `${countryCode}${rawPhone}`;
               
               // Get UTM parameters from URL if present
               const urlParams = new URLSearchParams(window.location.search);
@@ -74,6 +113,7 @@ export default function Footer() {
                 if (response.ok) {
                   alert(t("footer.success"));
                   form.reset();
+                  setPhoneVal("");
                 } else {
                   throw new Error("API request failed");
                 }
@@ -97,7 +137,8 @@ export default function Footer() {
               <select 
                 className="bg-transparent text-white pl-4 pr-2 py-3.5 outline-none text-sm font-light border-r border-white/10 cursor-pointer rounded-l-full appearance-none w-[110px]"
                 name="countryCode"
-                defaultValue="+996"
+                value={countryCode}
+                onChange={handleCountryChange}
               >
                 <option value="+996" className="text-black">🇰🇬 +996 (KG)</option>
                 <option value="+7" className="text-black">🇷🇺 +7 (RU)</option>
@@ -107,7 +148,9 @@ export default function Footer() {
               <input 
                 type="tel" 
                 name="phone"
-                placeholder={t("footer.phone")}
+                placeholder={getPlaceholder()}
+                value={phoneVal}
+                onChange={handlePhoneChange}
                 required
                 className="w-full px-4 py-3.5 bg-transparent text-white placeholder-gray-500 focus:outline-none text-sm font-light rounded-r-full"
               />
@@ -116,7 +159,7 @@ export default function Footer() {
             {/* Submit Button - Oval */}
             <button
               type="submit"
-              className="w-full sm:w-[20%] px-6 py-3.5 bg-white text-[#151719] rounded-full hover:bg-gray-200 transition-all duration-300 text-sm tracking-wide font-bold uppercase shrink-0 cursor-pointer"
+              className="w-full sm:w-[20%] px-6 py-3.5 bg-white text-black rounded-full hover:bg-gray-200 transition-all duration-300 text-sm tracking-wide font-bold uppercase shrink-0 cursor-pointer"
             >
               {t("footer.submit")}
             </button>
@@ -131,7 +174,7 @@ export default function Footer() {
           {/* ── Col 1: Brand ── */}
           <div className="flex flex-col items-start text-left col-span-2 lg:col-auto">
             <Image
-              src="/images/dominant-logo-white.png"
+              src="/images/dominant-logo-white.webp"
               alt="DOMINANT+"
               width={150}
               height={28}
@@ -205,31 +248,6 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-          </div>
-
-          {/* ── Col 4: Documents ── */}
-          <div id="documents" className="flex flex-col items-start text-left col-span-2 sm:col-span-1">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">{t("footer.docsTitle")}</h4>
-
-            <ul className="w-full space-y-2 mb-4">
-              {documents.map((doc, idx) => (
-                <li key={idx}>
-                  <a
-                    href={doc.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start justify-start gap-2.5 py-1 group"
-                  >
-                    <span className="text-[10px] text-gray-500 bg-white/5 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider shrink-0 mt-0.5 group-hover:text-white group-hover:bg-white/10 transition-colors">
-                      PDF
-                    </span>
-                    <span className="text-sm text-gray-400 group-hover:text-white transition-colors font-light leading-snug">
-                      {t(doc.key)}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
 
         </div>

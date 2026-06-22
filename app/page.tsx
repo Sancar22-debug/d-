@@ -6,6 +6,7 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import HeroContent from "@/components/HeroContent";
 import ProjectCategories from "@/components/ProjectCategories";
+import ProjectDocumentsSection from "@/components/ProjectDocumentsSection";
 import Footer from "@/components/Footer";
 import { ProjectStatus } from "@/data/projects";
 import styles from "@/components/Hero.module.css";
@@ -153,7 +154,7 @@ export default function Home() {
             key="splash"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#151719]"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -161,7 +162,7 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="flex flex-col items-center"
             >
-              <img src="/images/dominant-logo-white.png" alt="DOMINANT+" className="h-6 w-auto mb-6 opacity-90" />
+              <img src="/images/dominant-logo-white.webp" alt="DOMINANT+" className="h-6 w-auto mb-6 opacity-90" />
               <div className="w-32 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
                 <motion.div
                   initial={{ x: "-100%" }}
@@ -204,7 +205,6 @@ export default function Home() {
               selectedCategory={selectedCategory}
               onSelectCategory={(status) => setSelectedCategory(status)}
               onBack={() => setSelectedCategory(null)}
-              onHome={goToHero}
             />
           )}
         </AnimatePresence>
@@ -212,7 +212,8 @@ export default function Home() {
 
       {/* Footer is visible on all project screens, wrapped to be ABOVE the fixed sky background */}
       {activeView === "projects" && (
-        <div className="relative z-[2] bg-[#151719]">
+        <div className="relative z-[2] bg-black">
+          <ProjectDocumentsSection />
           <Footer />
         </div>
       )}

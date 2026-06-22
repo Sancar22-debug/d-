@@ -20,9 +20,9 @@ export default function HeroContent({ onExplore, onContact }: HeroContentProps) 
     <motion.section
       id="hero"
       className={styles.hero}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.8 } }}
-      exit={{ opacity: 0, y: -60, transition: { duration: 0.8, ease: "easeInOut" } }}
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1, transition: { duration: 0.6 } }}
+      exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.4, ease: "easeInOut" } }}
     >
       {/* Hero title */}
       <div className={styles.titleLayer}>
@@ -31,11 +31,11 @@ export default function HeroContent({ onExplore, onContact }: HeroContentProps) 
             <motion.span
               key={i}
               className={styles.titleLine}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{
-                duration: 0.7,
-                delay: 0.3 + i * 0.12,
+                duration: 0.6,
+                delay: i * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
@@ -49,18 +49,18 @@ export default function HeroContent({ onExplore, onContact }: HeroContentProps) 
       <div className={styles.bottomContent}>
         <motion.p
           className={styles.subtitle}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
         >
           {t("hero.subtitle")}
         </motion.p>
 
         <motion.div
           className={styles.buttons}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
         >
           <button className={styles.btnPrimary} onClick={onExplore}>
             {t("hero.explore")}
@@ -75,7 +75,7 @@ export default function HeroContent({ onExplore, onContact }: HeroContentProps) 
           className={styles.scrollHint}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.8 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}

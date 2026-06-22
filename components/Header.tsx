@@ -91,7 +91,7 @@ export default function Header({ onContact, onHome }: { onContact?: () => void, 
             }}
           >
             <Image
-              src="/images/dominant-logo-white.png"
+              src="/images/dominant-logo-white.webp"
               alt="DOMINANT+"
               width={140}
               height={20}

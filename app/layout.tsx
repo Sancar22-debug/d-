@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
-import { Unbounded, Manrope } from "next/font/google";
+import { Geologica, Unbounded } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
 // ============================================
-// Font Configuration
+// Font Configuration — Brand Book: Geologica (Body) & Unbounded (Hero Title)
 // ============================================
+
+const geologica = Geologica({
+  subsets: ["latin", "cyrillic", "cyrillic-ext"],
+  variable: "--font-geologica",
+  display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 const unbounded = Unbounded({
   subsets: ["latin", "cyrillic"],
   variable: "--font-unbounded",
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
-
-const manrope = Manrope({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-manrope",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 // ============================================
@@ -66,8 +66,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${unbounded.variable} ${manrope.variable}`}>
-      <body style={{ fontFamily: "var(--font-manrope), sans-serif" }}>
+    <html lang="ru" className={`${geologica.variable} ${unbounded.variable}`}>
+      <body style={{ fontFamily: "var(--font-geologica), sans-serif" }}>
         <Providers>{children}</Providers>
       </body>
     </html>
