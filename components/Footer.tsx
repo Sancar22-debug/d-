@@ -119,7 +119,7 @@ export default function Footer() {
                 }
               } catch (error) {
                 console.error("Error submitting lead:", error);
-                alert("Произошла ошибка при отправке. Пожалуйста, попробуйте позже.");
+                alert(t("footer.error"));
               }
             }}
           >

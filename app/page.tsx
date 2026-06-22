@@ -9,12 +9,14 @@ import ProjectCategories from "@/components/ProjectCategories";
 import ProjectDocumentsSection from "@/components/ProjectDocumentsSection";
 import Footer from "@/components/Footer";
 import { ProjectStatus } from "@/data/projects";
+import { useLanguage } from "@/components/LanguageContext";
 import styles from "@/components/Hero.module.css";
 import heroSkyImg from "@/public/images/back.webp";
 
 type ActiveView = "hero" | "projects";
 
 export default function Home() {
+  const { t } = useLanguage();
   const [activeView, setActiveView] = useState<ActiveView>("hero");
   const [selectedCategory, setSelectedCategory] =
     useState<ProjectStatus | null>(null);
@@ -182,7 +184,7 @@ export default function Home() {
       <div className={styles.skyBg}>
         <Image
           src={heroSkyImg}
-          alt="DOMINANT+ — Строим пространства для жизни"
+          alt={t("hero.alt")}
           fill
           priority
           sizes="100vw"

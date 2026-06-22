@@ -231,7 +231,7 @@ export default function ProjectCategories({
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                      <span className="text-gray-400 text-sm uppercase tracking-widest">Нет фото</span>
+                      <span className="text-gray-400 text-sm uppercase tracking-widest">{t("detail.noPhoto")}</span>
                     </div>
                   )}
                 </div>
@@ -377,7 +377,7 @@ export default function ProjectCategories({
                         </div>
                       </div>
                       <p className="text-gray-600 leading-relaxed text-left">
-                        Во дворе предусмотрена современная спортивная зона с тренажёрами и уютные площадки для детей. Пространство продумано так, чтобы жители могли с комфортом заниматься спортом, проводить разминку или практиковать йогу, а дети — безопасно и активно играть рядом.
+                        {t("detail.territoryDesc")}
                       </p>
                     </div>
                     )}
@@ -387,7 +387,7 @@ export default function ProjectCategories({
                     <div className="mb-20">
                       <div className="mb-16">
                         <h4 className="text-3xl font-light mb-6 text-[#151719]">
-                          Экстерьер
+                          {t("detail.exterior")}
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                           <div className="w-full relative rounded-3xl overflow-hidden shadow-lg border border-gray-100">
@@ -404,18 +404,18 @@ export default function ProjectCategories({
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-8">
                         <div>
                           <h4 className="text-3xl font-light mb-6 text-[#151719]">
-                            Типовой этаж
+                            {t("detail.typicalFloor")}
                           </h4>
                           <div className="w-full relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-zoom-in group" onClick={() => setZoomedImage('/images/winchester/typical-floor.webp')}>
                             <Image src="/images/winchester/typical-floor.webp" alt="Типовой этаж" width={1000} height={1000} style={{ width: '100%', height: 'auto' }} className="group-hover:scale-105 transition-transform duration-700" />
                           </div>
                           <p className="mt-4 text-gray-600 leading-relaxed text-left">
-                            9 этажей, 27 квартир (по 3 квартиры на этаже).
+                            {t("winchester.floorPlanDesc")}
                           </p>
                         </div>
                         <div>
                           <h4 className="text-3xl font-light mb-6 text-[#151719]">
-                            Коммерческие помещения
+                            {t("detail.commercial")}
                           </h4>
                           <div className="w-full relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-zoom-in group" onClick={() => setZoomedImage('/images/winchester/commercial.webp')}>
                             <Image src="/images/winchester/commercial.webp" alt="Коммерческие помещения" width={1000} height={1000} style={{ width: '100%', height: 'auto' }} className="group-hover:scale-105 transition-transform duration-700" />
@@ -424,7 +424,7 @@ export default function ProjectCategories({
                       </div>
                       <div className="mt-16">
                         <h4 className="text-3xl font-light mb-6 text-[#151719]">
-                          Престижное расположение в золотом квадрате
+                          {t("winchester.locationDesc")}
                         </h4>
                         <div className="w-full relative rounded-3xl overflow-hidden shadow-lg border border-gray-100">
                           <Image src="/images/winchester/location-map.webp" alt="Престижное расположение" width={1600} height={900} style={{ width: '100%', height: 'auto' }} />
@@ -438,7 +438,7 @@ export default function ProjectCategories({
                     <div className="mb-20">
                       <div className="mb-16">
                         <h4 className="text-3xl font-light mb-6 text-[#151719]">
-                          Экстерьер
+                          {t("detail.exterior")}
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                           <div className="w-full relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-zoom-in group" onClick={() => setZoomedImage('/images/ala-archa/exterior.webp')}>
@@ -481,7 +481,7 @@ export default function ProjectCategories({
                     {/* Gallery for completed projects */}
                     {project.id !== "orion" && project.gallery && project.gallery.length > 0 && (
                     <div className="mb-20">
-                      <h4 className="text-3xl font-light mb-8 text-[#151719]">Галерея</h4>
+                      <h4 className="text-3xl font-light mb-8 text-[#151719]">{t("detail.gallery")}</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {project.gallery.map((img: string, idx: number) => (
                           <div key={idx} className="h-64 sm:h-80 w-full relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-zoom-in group" onClick={() => setZoomedImage(img)}>
@@ -550,7 +550,7 @@ export default function ProjectCategories({
                     ) : project.layouts && project.layouts.length > 0 ? (
                     <div className="mb-20">
                       <h4 className="text-3xl font-light mb-8 text-[#151719]">
-                        Планировки квартир
+                        {t("detail.layouts")}
                       </h4>
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {project.layouts.map((layout, idx) => (

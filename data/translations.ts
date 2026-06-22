@@ -65,6 +65,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "detail.pso": "ПСО",
     "detail.commissioning": "Ввод в эксплуатацию",
     "detail.perFloor": "На этаже",
+    "detail.noPhoto": "Нет фото",
+    "detail.commercial": "Коммерческие помещения",
+    "detail.gallery": "Галерея",
+    "detail.typicalFloor": "Типовой этаж",
 
     // ORION project data
     "orion.type": "Жилой дом",
@@ -82,7 +86,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "alaArcha.address": "Бишкек",
     "alaArcha.parking": "Подземный паркинг",
     "alaArcha.ceilingHeight": "3.5 м",
-    "alaArcha.pso": "4 квартал 2025",
+    "alaArcha.pso": "На стадии сдачи ПСО",
     "alaArcha.commissioning": "2026",
     "alaArcha.description": "АЛА-АРЧА — семейный природный кластер премиум класса вдали от городского шума.",
 
@@ -91,9 +95,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     "winchester.class": "Премиум Класс",
     "winchester.location": "Престижный район",
     "winchester.address": "Бишкек",
-    "winchester.parking": "Сдан под ПСО",
+    "winchester.parking": "На стадии ввода в эксплуатацию",
     "winchester.ceilingHeight": "3.3 м",
     "winchester.description": "WINCHESTER — премиальный жилой комплекс с уникальной архитектурой и высоким уровнем комфорта.",
+    "winchester.locationDesc": "Престижное расположение в золотом квадрате",
+    "winchester.floorPlanDesc": "9 этажей, 27 квартир (по 3 квартиры на этаже).",
 
     // Document titles
     "doc.agZaklyuchenie": "Архитектурно-градостроительное заключение",
@@ -153,6 +159,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.address": "Бишкек, Боконбаева 115",
     "footer.docsTitle": "Документы",
     "footer.copyright": "Все права защищены.",
+    "footer.error": "Произошла ошибка при отправке. Пожалуйста, попробуйте позже.",
+    
+    "nav.openMenu": "Открыть меню",
+    "nav.closeMenu": "Закрыть меню",
+    "hero.alt": "DOMINANT+ — Строим пространства для жизни",
   },
 
   EN: {
@@ -216,6 +227,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "detail.pso": "PSO",
     "detail.commissioning": "Commissioning",
     "detail.perFloor": "Per Floor",
+    "detail.noPhoto": "No photo",
+    "detail.commercial": "Commercial Spaces",
+    "detail.gallery": "Gallery",
+    "detail.typicalFloor": "Typical Floor",
 
     // ORION project data
     "orion.type": "Residential Building",
@@ -233,7 +248,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "alaArcha.address": "Bishkek",
     "alaArcha.parking": "Underground Parking",
     "alaArcha.ceilingHeight": "3.5 m",
-    "alaArcha.pso": "Q4 2025",
+    "alaArcha.pso": "PSO handover phase",
     "alaArcha.commissioning": "2026",
     "alaArcha.description": "ALA-ARCHA — a premium-class family nature cluster away from the city noise.",
 
@@ -242,9 +257,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     "winchester.class": "Premium Class",
     "winchester.location": "Prestigious District",
     "winchester.address": "Bishkek",
-    "winchester.parking": "Handed over (PSO)",
+    "winchester.parking": "Commissioning phase",
     "winchester.ceilingHeight": "3.3 m",
     "winchester.description": "WINCHESTER — a premium residential complex with unique architecture and a high level of comfort.",
+    "winchester.locationDesc": "Prestigious location in the golden square",
+    "winchester.floorPlanDesc": "9 floors, 27 apartments (3 apartments per floor).",
 
     // Document titles
     "doc.agZaklyuchenie": "Architectural and Urban Planning Conclusion",
@@ -296,7 +313,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.brand":
       "A construction company creating modern residential projects in Bishkek.",
     "footer.tagline":
-      "Modern Architecture.\nReliable Approach.\nSpaces for Living.",
+      "Modern architecture.\nReliable approach.\nSpaces for living.",
     "footer.navTitle": "Navigation",
     "footer.contactsTitle": "Contacts",
     "footer.phoneLabel": "Phone",
@@ -304,6 +321,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.address": "Bishkek, Bokonbaeva 115",
     "footer.docsTitle": "Documents",
     "footer.copyright": "All rights reserved.",
+    "footer.error": "An error occurred while sending. Please try again later.",
+    
+    "nav.openMenu": "Open menu",
+    "nav.closeMenu": "Close menu",
+    "hero.alt": "DOMINANT+ — Building spaces for living",
   },
 
   KG: {
@@ -368,6 +390,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "detail.pso": "ПСО",
     "detail.commissioning": "Пайдаланууга берүү",
     "detail.perFloor": "Кабатта",
+    "detail.noPhoto": "Сүрөт жок",
+    "detail.commercial": "Коммерциялык жайлар",
+    "detail.gallery": "Галерея",
+    "detail.typicalFloor": "Типтүү кабат",
 
     // ORION project data
     "orion.type": "Турак жай",
@@ -385,7 +411,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "alaArcha.address": "Бишкек",
     "alaArcha.parking": "Жер алдындагы паркинг",
     "alaArcha.ceilingHeight": "3.5 м",
-    "alaArcha.pso": "2025-жылдын 4-чейреги",
+    "alaArcha.pso": "ПСО тапшыруу стадиясында",
     "alaArcha.commissioning": "2026",
     "alaArcha.description": "АЛА-АРЧА — шаардын ызы-чуусунан алыс жайгашкан премиум класстагы үй-бүлөлүк жаратылыш кластери.",
 
@@ -394,9 +420,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     "winchester.class": "Премиум Класс",
     "winchester.location": "Престиждүү район",
     "winchester.address": "Бишкек",
-    "winchester.parking": "ПСО тапшырылган",
+    "winchester.parking": "Пайдаланууга берүү стадиясында",
     "winchester.ceilingHeight": "3.3 м",
     "winchester.description": "WINCHESTER — уникалдуу архитектурасы жана жогорку комфорт деңгээли бар премиум класстагы турак жай комплекси.",
+    "winchester.locationDesc": "Алтын квадраттагы престиждүү жайгашуу",
+    "winchester.floorPlanDesc": "9 кабат, 27 батир (ар бир кабатта 3 батирден).",
 
     // Document titles
     "doc.agZaklyuchenie": "Архитектуралык-шаар куруу корутундусу",
@@ -448,14 +476,18 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.success": "Арыз ийгиликтүү жөнөтүлдү!",
     "footer.brand":
       "Бишкекте заманбап турак жай долбоорлорун түзгөн курулуш компаниясы.",
-    "footer.tagline":
-      "Заманбап архитектура.\nИшенимдүү мамиле.\nЖашоо үчүн мейкиндик.",
+    "footer.tagline": "Заманбап архитектура.\nИшенимдүү мамиле.\nЖашоо үчүн мейкиндиктер.",
     "footer.navTitle": "Навигация",
     "footer.contactsTitle": "Байланыштар",
     "footer.phoneLabel": "Телефон",
     "footer.addressLabel": "Дарек",
-    "footer.address": "Бишкек, Боконбаева 115",
+    "footer.address": "Бишкек ш., Бөкөнбаев 115",
     "footer.docsTitle": "Документтер",
     "footer.copyright": "Бардык укуктар корголгон.",
+    "footer.error": "Жөнөтүүдө ката кетти. Сураныч, кийинчерээк кайра аракет кылыңыз.",
+    
+    "nav.openMenu": "Менюну ачуу",
+    "nav.closeMenu": "Менюну жабуу",
+    "hero.alt": "DOMINANT+ — Жашоо үчүн мейкиндик курабыз",
   },
 };

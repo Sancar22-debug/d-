@@ -170,7 +170,7 @@ export default function Header({ onContact, onHome }: { onContact?: () => void, 
           <button
             className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ""}`}
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
+            aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
           >
             <span className={styles.burgerLine} />
