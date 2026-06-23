@@ -71,10 +71,7 @@ export const buildingProjects: Project[] = [
       "/images/orion/new-exterior-views-2.webp",
       "/images/orion/new-courtyard-walkway.webp",
       "/images/orion/new-playground.webp",
-      "/images/orion/new-advantages.webp",
-      "/images/orion/new-entrance.webp",
-      "/images/orion/typical_floor.webp",
-      "/images/orion/location-map.webp"
+      "/images/orion/new-entrance.webp"
     ],
     layouts: [
       { area: "51.5 м²", type: "1-комнатная", image: "/images/orion/plan-1room-51.webp" },

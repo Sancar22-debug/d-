@@ -379,6 +379,25 @@ export default function ProjectCategories({
                       <p className="text-gray-600 leading-relaxed text-left">
                         {t("detail.territoryDesc")}
                       </p>
+
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16 mb-8">
+                        <div>
+                          <h4 className="text-3xl font-light mb-6 text-[#151719]">
+                            {t("detail.typicalFloor")}
+                          </h4>
+                          <div className="w-full relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-zoom-in group" onClick={() => setZoomedImage('/images/orion/typical_floor.webp')}>
+                            <Image src="/images/orion/typical_floor.webp" alt={t("detail.typicalFloor")} width={1000} height={1000} style={{ width: '100%', height: 'auto' }} className="group-hover:scale-105 transition-transform duration-700" />
+                          </div>
+                        </div>
+                        <div>
+                          <h4 className="text-3xl font-light mb-6 text-[#151719]">
+                            {t("detail.location")}
+                          </h4>
+                          <div className="w-full relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-zoom-in group" onClick={() => setZoomedImage('/images/orion/location-map.webp')}>
+                            <Image src="/images/orion/location-map.webp" alt={t("detail.location")} width={1000} height={1000} style={{ width: '100%', height: 'auto' }} className="group-hover:scale-105 transition-transform duration-700" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     )}
                     
@@ -479,7 +498,7 @@ export default function ProjectCategories({
                     )}
                     
                     {/* Gallery for completed projects */}
-                    {project.id !== "orion" && project.gallery && project.gallery.length > 0 && (
+                    {project.gallery && project.gallery.length > 0 && (
                     <div className="mb-20">
                       <h4 className="text-3xl font-light mb-8 text-[#151719]">{t("detail.gallery")}</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
