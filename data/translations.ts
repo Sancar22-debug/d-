@@ -104,6 +104,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Document titles
     "doc.agZaklyuchenie": "Архитектурно-градостроительное заключение",
     "doc.gosEkspertiza": "Государственная экспертиза",
+    "doc.reestr": "Реестр строящихся объектов",
     "doc.gosAkt": "Государственный акт на земельный участок",
     "doc.presentation": "Презентация проекта ORION",
     "doc.winchesterPresentation": "Презентация проекта WINCHESTER",
@@ -266,6 +267,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Document titles
     "doc.agZaklyuchenie": "Architectural and Urban Planning Conclusion",
     "doc.gosEkspertiza": "State Expertise",
+    "doc.reestr": "Register of objects under construction",
     "doc.gosAkt": "State Act for the Land Plot",
     "doc.presentation": "ORION Project Presentation",
     "doc.winchesterPresentation": "WINCHESTER Project Presentation",
@@ -429,6 +431,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Document titles
     "doc.agZaklyuchenie": "Архитектуралык-шаар куруу корутундусу",
     "doc.gosEkspertiza": "Мамлекеттик экспертиза",
+    "doc.reestr": "Курулуп жаткан объектилердин реестри",
     "doc.gosAkt": "Жер участогуна мамлекеттик акт",
     "doc.presentation": "ORION долбоорунун презентациясы",
     "doc.winchesterPresentation": "WINCHESTER долбоорунун презентациясы",
