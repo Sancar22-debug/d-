@@ -134,7 +134,7 @@ export const completedProjects: Project[] = [
     className: "Премиум Класс",
     location: "Престижное расположение в золотом квадрате",
     address: "ул. Шопокова / Токтогула, Бишкек",
-    floors: 9,
+    floors: 10,
     apartments: 27,
     commercialSpaces: true,
     parking: "Подземный паркинг",
