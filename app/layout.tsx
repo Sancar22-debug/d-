@@ -54,6 +54,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_KG",
   },
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 // ============================================

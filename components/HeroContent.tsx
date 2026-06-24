@@ -10,7 +10,7 @@ interface HeroContentProps {
 }
 
 export default function HeroContent({ onExplore, onContact }: HeroContentProps) {
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
 
   const titleText = t("hero.title");
   const needsCompact = titleText.length > 30;

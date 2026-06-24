@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Header from "@/components/Header";
@@ -164,7 +164,7 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="flex flex-col items-center"
             >
-              <img src="/images/dominant-logo-white.webp" alt="DOMINANT+" className="h-6 w-auto mb-6 opacity-90" />
+              <Image src="/images/dominant-logo-white.webp" alt="DOMINANT+" width={200} height={40} className="h-6 w-auto mb-6 opacity-90" unoptimized />
               <div className="w-32 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
                 <motion.div
                   initial={{ x: "-100%" }}
