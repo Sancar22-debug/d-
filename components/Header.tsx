@@ -6,7 +6,7 @@ import styles from "./Header.module.css";
 import { useLanguage } from "./LanguageContext";
 import { type Lang } from "@/data/translations";
 
-export default function Header({ onContact, onHome }: { onContact?: () => void, onHome?: () => void }) {
+export default function Header({ onContact, onHome, onNavClick }: { onContact?: () => void, onHome?: () => void, onNavClick?: (href: string) => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -54,12 +54,16 @@ export default function Header({ onContact, onHome }: { onContact?: () => void, 
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       e.preventDefault();
       setMenuOpen(false);
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
+      if (onNavClick) {
+        onNavClick(href);
+      } else {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
       }
     },
-    []
+    [onNavClick]
   );
 
   const handleLangSelect = (selectedLang: Lang) => {

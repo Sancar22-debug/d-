@@ -61,6 +61,17 @@ export default function Home() {
     }, 100);
   }, [switchView]);
 
+  const handleNavClick = useCallback((href: string) => {
+    if (activeView === "hero") {
+      switchView("projects");
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [activeView, switchView]);
+
   /* ── Scroll / touch / key detection ── */
   useEffect(() => {
     let lastTouchY = 0;
@@ -178,7 +189,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <Header onContact={goToContact} onHome={goToHero} />
+      <Header onContact={goToContact} onHome={goToHero} onNavClick={handleNavClick} />
 
       {/* ── Fixed sky background — always visible, never moves ── */}
       <div className={styles.skyBg}>
