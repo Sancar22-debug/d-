@@ -114,8 +114,8 @@ export const buildingProjects: Project[] = [
       },
       {
         title: "doc.gosAkt",
-        href: "/documents/gos_akt_page1.webp",
-        type: "IMG"
+        href: "/documents/gos_akt.pdf",
+        type: "PDF"
       },
       {
         title: "Презентация проекта ORION",

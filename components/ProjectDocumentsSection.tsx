@@ -1,37 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useLanguage } from "./LanguageContext";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export default function ProjectDocumentsSection() {
   const { t } = useLanguage();
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+  }, []);
 
   const documents = [
     { key: "doc.agZaklyuchenie", href: "/documents/ag_zaklyuchenie_page1.webp", type: "IMG" },
     { key: "doc.gosEkspertiza", href: "/documents/gos_ekspertiza_page1.webp", type: "IMG" },
     { key: "doc.reestr", href: "/documents/reestr_page1.webp", type: "IMG" },
-    { key: "doc.gosAkt", href: "/documents/gos_akt_page1.webp", type: "IMG" },
+    { key: "doc.gosAkt", href: "/documents/gos_akt.pdf", type: "PDF" },
   ];
 
   return (
     <section id="documents" className="relative z-[2] bg-black pt-16 pb-20 px-6 border-t border-white/10">
-      <div className="max-w-5xl mx-auto">
-        {/* Top: Title & Description */}
+      <div className="max-w-5xl mx-auto relative z-10">
+        {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-light text-white mb-5">
             {t("footer.docsTitle")}
           </h2>
           <div className="w-16 h-px bg-white/20 mx-auto mb-6"></div>
-          <p className="text-gray-400 font-light text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-400 font-light max-w-lg mx-auto leading-relaxed">
             {t("footer.brand")}
           </p>
         </motion.div>
@@ -129,21 +136,37 @@ export default function ProjectDocumentsSection() {
       </div>
 
       {/* Fullscreen Image Modal */}
-      {fullscreenImage && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 cursor-zoom-out"
-          onClick={() => setFullscreenImage(null)}
-        >
-          <div className="relative w-full h-full max-w-5xl max-h-[90vh]">
-            <Image 
-              src={fullscreenImage} 
-              alt="Fullscreen Document" 
-              fill 
-              className="object-contain"
-              unoptimized
-            />
-          </div>
-        </div>
+      {isMounted && typeof document !== "undefined" && createPortal(
+        <AnimatePresence>
+          {fullscreenImage && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/90 p-4 cursor-zoom-out"
+              onClick={() => setFullscreenImage(null)}
+            >
+              <button
+                onClick={() => setFullscreenImage(null)}
+                className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors z-[1000000]"
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+              <div className="relative w-full h-full max-w-5xl max-h-[90vh]">
+                <Image 
+                  src={fullscreenImage} 
+                  alt="Fullscreen Document" 
+                  fill 
+                  className="object-contain"
+                  unoptimized
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
       )}
     </section>
   );
