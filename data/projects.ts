@@ -98,19 +98,24 @@ export const buildingProjects: Project[] = [
     ],
     documents: [
       {
-        title: "Архитектурно-градостроительное заключение",
-        href: "/documents/ag_zaklyuchenie.pdf#zoom=30",
-        type: "PDF"
+        title: "doc.agZaklyuchenie",
+        href: "/documents/ag_zaklyuchenie_page1.webp",
+        type: "IMG"
       },
       {
-        title: "Государственная экспертиза",
-        href: "/documents/gos_ekspertiza.pdf#zoom=30",
-        type: "PDF"
+        title: "doc.gosEkspertiza",
+        href: "/documents/gos_ekspertiza_page1.webp",
+        type: "IMG"
       },
       {
-        title: "Государственный акт на земельный участок",
-        href: "/documents/gos_akt.pdf",
-        type: "PDF"
+        title: "doc.reestr",
+        href: "/documents/reestr_page1.webp",
+        type: "IMG"
+      },
+      {
+        title: "doc.gosAkt",
+        href: "/documents/gos_akt_page1.webp",
+        type: "IMG"
       },
       {
         title: "Презентация проекта ORION",

@@ -13,7 +13,7 @@ export default function ProjectDocumentsSection() {
     { key: "doc.agZaklyuchenie", href: "/documents/ag_zaklyuchenie_page1.webp", type: "IMG" },
     { key: "doc.gosEkspertiza", href: "/documents/gos_ekspertiza_page1.webp", type: "IMG" },
     { key: "doc.reestr", href: "/documents/reestr_page1.webp", type: "IMG" },
-    { key: "doc.gosAkt", href: "/documents/gos_akt.pdf", type: "PDF" },
+    { key: "doc.gosAkt", href: "/documents/gos_akt_page1.webp", type: "IMG" },
   ];
 
   return (

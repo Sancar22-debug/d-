@@ -608,36 +608,71 @@ export default function ProjectCategories({
 
                     {/* ── Documents ── */}
                     {project.documents && project.documents.length > 0 && (
-                    <div className="mb-12 max-w-md">
+                    <div className="mb-12 max-w-2xl">
                       <h4 className="text-2xl font-light mb-6 text-[#151719]">
                         {t("detail.documents")}
                       </h4>
-                      <ul className="space-y-3">
-                        {project.documents.map((doc: ProjectDocument, i: number) => (
-                          <li key={i}>
-                            <a href={doc.href} target="_blank" rel="noopener noreferrer" className="flex items-center group cursor-pointer">
-                              <span className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center mr-3 group-hover:bg-[#151719] group-hover:text-white transition-colors shrink-0">
-                                <svg
-                                  className="w-4 h-4"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="1.5"
-                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                  ></path>
-                                </svg>
-                              </span>
-                              <span className="text-sm text-[#151719] group-hover:text-gray-500 transition-colors underline decoration-1 underline-offset-4 flex items-center gap-2">
-                                {t(doc.title)} <span className="text-[10px] text-gray-400 border border-gray-200 rounded px-1 py-0.5 no-underline uppercase tracking-wider">{doc.type}</span>
-                              </span>
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
+
+                      {/* IMG Documents Row */}
+                      {project.documents.some(doc => doc.type === "IMG") && (
+                        <div className="flex flex-wrap gap-4 mb-6">
+                          {project.documents.filter(doc => doc.type === "IMG").map((doc, idx) => (
+                            <div 
+                              key={idx}
+                              onClick={() => setZoomedImage(doc.href)}
+                              className="group cursor-pointer bg-white border border-gray-200 rounded-xl overflow-hidden transition-all shadow-sm hover:shadow-md w-[110px] sm:w-[130px]"
+                            >
+                              <div className="w-full aspect-[1/1.414] relative bg-[#f8f8f8] p-1">
+                                <Image 
+                                  src={doc.href} 
+                                  alt={t(doc.title)} 
+                                  fill 
+                                  className="object-cover mix-blend-multiply"
+                                  unoptimized
+                                />
+                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                  <svg className="w-6 h-6 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                </div>
+                              </div>
+                              <div className="p-2 flex items-center justify-center min-h-[50px] border-t border-gray-100">
+                                <p className="text-[9px] sm:text-[10px] text-gray-500 group-hover:text-black transition-colors text-center leading-snug">
+                                  {t(doc.title)}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* PDF Documents List */}
+                      {project.documents.some(doc => doc.type === "PDF") && (
+                        <ul className="space-y-3">
+                          {project.documents.filter(doc => doc.type === "PDF").map((doc: ProjectDocument, i: number) => (
+                            <li key={i}>
+                              <a href={doc.href} target="_blank" rel="noopener noreferrer" className="flex items-center group cursor-pointer">
+                                <span className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center mr-3 group-hover:bg-[#151719] group-hover:text-white transition-colors shrink-0">
+                                  <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="1.5"
+                                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                    ></path>
+                                  </svg>
+                                </span>
+                                <span className="text-sm text-[#151719] group-hover:text-gray-500 transition-colors underline decoration-1 underline-offset-4 flex items-center gap-2">
+                                  {t(doc.title)} <span className="text-[10px] text-gray-400 border border-gray-200 rounded px-1 py-0.5 no-underline uppercase tracking-wider">{doc.type}</span>
+                                </span>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                     )}
 
