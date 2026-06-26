@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { company } from "@/data/company";
 import { useLanguage } from "./LanguageContext";
 
@@ -9,6 +10,16 @@ export default function Footer() {
   const { t } = useLanguage();
   const [countryCode, setCountryCode] = useState("+996");
   const [phoneVal, setPhoneVal] = useState("");
+  const [notification, setNotification] = useState<{show: boolean, type: 'success' | 'error', message: string}>({show: false, type: 'success', message: ''});
+
+  useEffect(() => {
+    if (notification.show) {
+      const timer = setTimeout(() => {
+        setNotification((prev) => ({ ...prev, show: false }));
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification.show]);
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCountryCode(e.target.value);
@@ -111,7 +122,7 @@ export default function Footer() {
                 });
                 
                 if (response.ok) {
-                  alert(t("footer.success"));
+                  setNotification({ show: true, type: 'success', message: t("footer.success") });
                   form.reset();
                   setPhoneVal("");
                 } else {
@@ -119,7 +130,7 @@ export default function Footer() {
                 }
               } catch (error) {
                 console.error("Error submitting lead:", error);
-                alert(t("footer.error"));
+                setNotification({ show: true, type: 'error', message: t("footer.error") });
               }
             }}
           >
@@ -261,6 +272,43 @@ export default function Footer() {
           </p>
         </div>
       </div>
+
+      {/* ── Notification Toast ── */}
+      <AnimatePresence>
+        {notification.show && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="fixed bottom-6 left-6 right-6 sm:left-auto sm:right-6 sm:min-w-[320px] z-[200] flex items-center gap-4 px-6 py-4 rounded-2xl shadow-2xl bg-[#0a0a0a] border border-white/5 text-white"
+          >
+            <div className="flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-white/5 text-white">
+              {notification.type === 'success' ? (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-light tracking-wide leading-relaxed">{notification.message}</p>
+            </div>
+            <button 
+              type="button"
+              onClick={() => setNotification(prev => ({ ...prev, show: false }))}
+              className="shrink-0 p-1.5 rounded-full text-gray-500 hover:text-white transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </footer>
   );
